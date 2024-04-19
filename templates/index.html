@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titanic Dataset Classifier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #007bff;
+            text-align: center;
+        }
+        p {
+            text-align: justify;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .alert {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+        }
+        .alert-success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+        .alert-danger {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Titanic Dataset Classifier - Clasificador para Titanic Dataset</h1>
+        <p>
+            Enter the details below to classify a passenger from the Titanic dataset.
+        </p>
+        <p>
+            Ingrese los datos de cada variable para clasificar a los pasajeros según Titanic dataset.
+        </p>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, i in messages %}
+        <div class="alert alert-{{category}}">
+            {{i}}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <form id="titanicForm" action="/" method="POST">
+            <label for="passclass">Passenger Class - Clase pasajero:</label>
+            <select id="passclass" name="passs"> <!-- Ojo que esta PClass la tengo que definir según el encoding de mi código -->
+                <option value="0">1st Class - 1ra Clase</option>
+                <option value="1">2nd Class - 2da Clase</option>
+                <option value="2">3rd Class - 3ra Clase</option>
+            <label for="age">Age - Edad:</label>
+            <input type="text" id="age" name="age" placeholder="Enter age - Digite la edad">
+            <label>Gender - Género:</label>
+            <input type="radio" id="male" name="gender" value="1"><br>
+            <label for="1">Male - Hombre</label>
+            <input type="radio" id="female" name="gender" value="0"><br>
+            <label for="0">Female - Mujer</label>
+            <button type="submit">Classify - Clasificar</button>
+        </form>
+    </div>
+    <div class="footer">
+        <p>Copyright &copy; 2024 - Juan Serna</p>
+    </div>
+</body>
+</html>
